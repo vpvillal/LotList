@@ -1,0 +1,11 @@
+{
+	"db_name": "__css_dw",
+	"db_schema": "__reports_dw",
+	"db_username": "postgres",
+	"db_password": "yy2hW9DKMeByjQ",
+	"db_server": "10.29.173.20",
+	"db_port": "5432",
+	"db_flavor": "postgresql",
+	"teams_webhook_error_test" : "https://sksiltronusa.webhook.office.com/webhookb2/6b580fdf-0b94-416b-8042-564761f0923f@292e08a6-9e0b-413c-8731-e0f47de977a0/IncomingWebhook/1b77bb247e15492a8474726721d1bd93/4450a52e-58ff-438f-917c-1295eb358b66",
+	"teams_webhook_error" : "https://sksiltronusa.webhook.office.com/webhookb2/6b580fdf-0b94-416b-8042-564761f0923f@292e08a6-9e0b-413c-8731-e0f47de977a0/IncomingWebhook/f1804958c3b54d659b31e7dd8199b4bb/4450a52e-58ff-438f-917c-1295eb358b66"
+}
