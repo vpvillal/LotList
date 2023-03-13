@@ -17,6 +17,8 @@ db_conn = f'dbname={db_name} user={db_username} password={db_password} host={db_
 teams_webhook_error = app_config["teams_webhook_error"]
 teams_webhook_error_test = app_config["teams_webhook_error_test"]
 
+conn = None
+
 try:
     # Setup teams provider
     teamsProvider = TeamsProvider(teams_webhook_error)
@@ -28,12 +30,16 @@ try:
     cur = conn.cursor()
 
     # execute stored procedure / function
+    #cur.callproc('__reports_dw.__reports_dw_lot_list_snapshot')
     sql = '''select __reports_dw.__reports_dw_lot_list_snapshot()'''
     cur.execute(sql)
 
-    cur.close()
-    conn.close()
-
-except psycopg2.Error as e:
+    conn.commit()
+except (Exception, psycopg2.DatabaseError) as e:
+    conn.rollback()
     teamsProvider.text("LOTLIST " + e.pgerror)
     teamsProvider.send()
+finally:
+    if conn:
+        cur.close()
+        conn.close()
