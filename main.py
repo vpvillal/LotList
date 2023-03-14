@@ -30,7 +30,6 @@ try:
     cur = conn.cursor()
 
     # execute stored procedure / function
-    #cur.callproc('__reports_dw.__reports_dw_lot_list_snapshot')
     sql = '''select __reports_dw.__reports_dw_lot_list_snapshot()'''
     cur.execute(sql)
 
