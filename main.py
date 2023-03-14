@@ -1,21 +1,27 @@
+import os.path
+
 import psycopg2 as psycopg2
 
 from loadConfig import load_config
+from registryLoader import RegistryLoader
 from teamsProvider import TeamsProvider
 
-# Load config file
+# Load config file/registry
 app_config = load_config()
+registry = RegistryLoader(r'Software\\SKSiltron\\LotList')
 
-db_name = app_config["db_name"]
-db_schema = app_config["db_schema"]
-db_username = app_config["db_username"]
-db_password = app_config["db_password"]
-db_server = app_config["db_server"]
-db_port = app_config["db_port"]
-db_flavor = app_config["db_flavor"]
+db_name = registry.get_registry("db_name")
+db_schema = registry.get_registry("db_schema")
+db_username = registry.get_registry("db_username")
+db_password = registry.get_registry("db_password")
+db_server = registry.get_registry("db_server")
+db_port = registry.get_registry("db_port")
+db_flavor = registry.get_registry("db_flavor")
+teams_webhook_error = registry.get_registry("teams_webhook_error")
+teams_webhook_error_test = registry.get_registry("teams_webhook_error_test")
+
 db_conn = f'dbname={db_name} user={db_username} password={db_password} host={db_server} port={db_port}'
-teams_webhook_error = app_config["teams_webhook_error"]
-teams_webhook_error_test = app_config["teams_webhook_error_test"]
+
 
 conn = None
 
