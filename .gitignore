@@ -1,1 +1,3 @@
-/__config/
+/dist/
+/build/
+main.spec

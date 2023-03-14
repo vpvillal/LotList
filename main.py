@@ -8,7 +8,7 @@ from teamsProvider import TeamsProvider
 
 # Load config file/registry
 app_config = load_config()
-registry = RegistryLoader(r'Software\\SKSiltron\\LotList')
+registry = RegistryLoader(app_config["registry_path"])
 
 db_name = registry.get_registry("db_name")
 db_schema = registry.get_registry("db_schema")
